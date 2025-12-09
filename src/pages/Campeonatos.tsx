@@ -41,7 +41,7 @@ const Campeonatos = () => {
 
   const filteredCampeonatos = campeonatos.filter((camp) =>
     camp.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    camp.lugar?.toLowerCase().includes(searchTerm.toLowerCase())
+    camp.ubicacion?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleEdit = (campeonato: Campeonato) => {
@@ -80,7 +80,7 @@ const Campeonatos = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Buscar por nombre o lugar..."
+                placeholder="Buscar por nombre o ubicacion..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -95,11 +95,12 @@ const Campeonatos = () => {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Id</TableHead>
                   <TableHead>Nombre</TableHead>
-                  <TableHead>Lugar</TableHead>
-                  <TableHead>Fecha Inicio</TableHead>
-                  <TableHead>Fecha Fin</TableHead>
-                  <TableHead>Descripción</TableHead>
+                  <TableHead>Ubicacion</TableHead>
+                  <TableHead>Descripcion</TableHead>
+                  <TableHead>Nivel</TableHead>
+                  <TableHead>Fecha</TableHead>
                   <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
@@ -107,11 +108,12 @@ const Campeonatos = () => {
                 {filteredCampeonatos.length > 0 ? (
                   filteredCampeonatos.map((campeonato) => (
                     <TableRow key={campeonato.id}>
+                      <TableCell>{campeonato.idCampeonato}</TableCell>
                       <TableCell className="font-medium">{campeonato.nombre}</TableCell>
-                      <TableCell>{campeonato.lugar}</TableCell>
-                      <TableCell>{new Date(campeonato.fechaInicio).toLocaleDateString()}</TableCell>
-                      <TableCell>{new Date(campeonato.fechaFin).toLocaleDateString()}</TableCell>
-                      <TableCell className="max-w-xs truncate">{campeonato.descripcion}</TableCell>
+                      <TableCell>{campeonato.ubicacion}</TableCell>
+                      <TableCell>{campeonato.descripcion}</TableCell>
+                      <TableCell>{campeonato.nivelDeCampeonato}</TableCell>
+                      <TableCell>{new Date(campeonato.fechaDeCampeonato).toLocaleDateString()}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
                           <Button

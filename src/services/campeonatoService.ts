@@ -8,21 +8,21 @@ export const campeonatoService = {
   },
 
   getById: async (id: number): Promise<Campeonato> => {
-    const response = await api.get(`/campeonatos/${id}`);
+    const response = await api.get(`/campeonato/${id}`);
     return response.data;
   },
 
   create: async (data: Campeonato): Promise<Campeonato> => {
-    const response = await api.post('/campeonatos', data);
+    const response = await api.post('/campeonato', data);
     return response.data;
   },
 
   update: async (id: number, data: Campeonato): Promise<Campeonato> => {
-    const response = await api.put(`/campeonatos/${id}`, data);
+    const response = await api.put(`/campeonato/${id}`, data);
     return response.data;
   },
 
   delete: async (id: number): Promise<void> => {
-    await api.delete(`/campeonatos/${id}`);
+    await api.delete(`/campeonato/${id}`);
   },
 };

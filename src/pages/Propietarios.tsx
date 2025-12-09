@@ -40,8 +40,7 @@ const Propietarios = () => {
   });
 
   const filteredPropietarios = propietarios.filter((prop) =>
-    `${prop.nombre} ${prop.apellido}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    prop.email?.toLowerCase().includes(searchTerm.toLowerCase())
+    `${prop.nombre} ${prop.apellido}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleEdit = (propietario: Propietario) => {
@@ -80,7 +79,7 @@ const Propietarios = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Buscar por nombre o email..."
+                placeholder="Buscar por nombre"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -95,11 +94,16 @@ const Propietarios = () => {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Id</TableHead>
                   <TableHead>Nombre</TableHead>
+                  <TableHead>Alias</TableHead>
+                  <TableHead>Apellidio</TableHead>
+                  <TableHead>Cedula</TableHead>
+                  <TableHead>Telefono</TableHead>
                   <TableHead>Email</TableHead>
-                  <TableHead>Teléfono</TableHead>
-                  <TableHead>Ciudad</TableHead>
-                  <TableHead>País</TableHead>
+                  <TableHead>Direccion</TableHead>
+                  <TableHead>Fecha de nacimiento</TableHead>
+                  <TableHead>Fecha de registro</TableHead>
                   <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
@@ -107,13 +111,16 @@ const Propietarios = () => {
                 {filteredPropietarios.length > 0 ? (
                   filteredPropietarios.map((propietario) => (
                     <TableRow key={propietario.id}>
+                      <TableCell>{propietario.idPropietario}</TableCell>
                       <TableCell className="font-medium">
                         {propietario.nombre} {propietario.apellido}
                       </TableCell>
-                      <TableCell>{propietario.email}</TableCell>
+                      <TableCell>{propietario.cedula}</TableCell>
                       <TableCell>{propietario.telefono}</TableCell>
-                      <TableCell>{propietario.ciudad}</TableCell>
-                      <TableCell>{propietario.pais}</TableCell>
+                      <TableCell>{propietario.email}</TableCell>
+                      <TableCell>{propietario.direccion}</TableCell>
+                      <TableCell>{propietario.fechaDeNacimiento}</TableCell>
+                      <TableCell>{propietario.fechaDeRegistro}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
                           <Button

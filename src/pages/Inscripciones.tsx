@@ -88,11 +88,13 @@ const Inscripciones = () => {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Id</TableHead>
                   <TableHead>Equino</TableHead>
                   <TableHead>Campeonato</TableHead>
-                  <TableHead>Posición</TableHead>
-                  <TableHead>Puntos</TableHead>
-                  <TableHead>Observaciones</TableHead>
+                  <TableHead>Categoria</TableHead>
+                  <TableHead>Puntaje</TableHead>
+                  <TableHead>Resultado</TableHead>
+                  <TableHead>Procedencia</TableHead>
                   <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
@@ -100,17 +102,11 @@ const Inscripciones = () => {
                 {filteredInscripciones.length > 0 ? (
                   filteredInscripciones.map((inscripcion) => (
                     <TableRow key={inscripcion.id}>
-                      <TableCell className="font-medium">
-                        {inscripcion.equino?.nombre || `ID: ${inscripcion.equipoId}`}
-                      </TableCell>
-                      <TableCell>
-                        {inscripcion.campeonato?.nombre || `ID: ${inscripcion.campeonatoId}`}
-                      </TableCell>
-                      <TableCell>{inscripcion.posicion || "-"}</TableCell>
-                      <TableCell>{inscripcion.puntos || "-"}</TableCell>
-                      <TableCell className="max-w-xs truncate">
-                        {inscripcion.observaciones || "-"}
-                      </TableCell>
+                      <TableCell>{inscripcion.idEquinoCampeonato || "-"}</TableCell>
+                      <TableCell>{inscripcion.categoria || "-"}</TableCell>
+                      <TableCell>{inscripcion.puntaje || "-"}</TableCell>
+                      <TableCell>{inscripcion.resultado || "-"}</TableCell>
+                      <TableCell>{inscripcion.procedencia || "-"}</TableCell>
                       <TableCell className="text-right">
                         <Button
                           variant="outline"

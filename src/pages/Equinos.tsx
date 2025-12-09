@@ -40,8 +40,7 @@ const Equinos = () => {
   });
 
   const filteredEquinos = equinos.filter((equino) =>
-    equino.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    equino.raza?.toLowerCase().includes(searchTerm.toLowerCase())
+    equino.nombre.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleEdit = (equino: Equino) => {
@@ -80,7 +79,7 @@ const Equinos = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Buscar por nombre o raza..."
+                placeholder="Buscar por nombre"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -95,11 +94,22 @@ const Equinos = () => {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Id</TableHead>
+                  <TableHead>Chip</TableHead>
                   <TableHead>Nombre</TableHead>
-                  <TableHead>Raza</TableHead>
-                  <TableHead>Sexo</TableHead>
-                  <TableHead>Color</TableHead>
-                  <TableHead>Fecha de Nacimiento</TableHead>
+                  <TableHead>Apellido</TableHead>
+                  <TableHead>Genero</TableHead>
+                  <TableHead>Fecha de nacimiento</TableHead>
+                  <TableHead>Tipo de paso</TableHead>
+                  <TableHead>Tipo de sangre</TableHead>
+                  <TableHead>Foto</TableHead>
+                  <TableHead>Observacion</TableHead>
+                  <TableHead>Propietario</TableHead>
+                  <TableHead>Arbol genealogico</TableHead>
+                  <TableHead>Esta vivo</TableHead>
+                  <TableHead>Fecha de fallecimiento</TableHead>
+                  <TableHead>Fecha de creacion</TableHead>
+                  <TableHead>Fecha de actualizacion</TableHead>
                   <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
@@ -107,10 +117,22 @@ const Equinos = () => {
                 {filteredEquinos.length > 0 ? (
                   filteredEquinos.map((equino) => (
                     <TableRow key={equino.id}>
-                      <TableCell className="font-medium">{equino.nombre}</TableCell>
-                      <TableCell>{equino.raza}</TableCell>
-                      <TableCell>{equino.sexo}</TableCell>
-                      <TableCell>{equino.color}</TableCell>
+                      <TableCell className="font-medium">{equino.idEquino}</TableCell>
+                      <TableCell>{equino.idChip}</TableCell>
+                      <TableCell>{equino.nombre}</TableCell>
+                      <TableCell>{equino.apellido}</TableCell>
+                      <TableCell>{equino.genero}</TableCell>
+                      <TableCell>{equino.fechaDeNacimiento}</TableCell>
+                      <TableCell>{equino.tipoDePaso}</TableCell>
+                      <TableCell>{equino.tipoDeSangre}</TableCell>
+                      <TableCell>{equino.urlFoto}</TableCell>
+                      <TableCell>{equino.observacion}</TableCell>
+                      <TableCell>{equino.propietario}</TableCell>
+                      <TableCell>{equino.arbolGenealogico}</TableCell>
+                      <TableCell>{equino.estaVivo}</TableCell>
+                      <TableCell>{equino.fechaDeFallecimiento}</TableCell>
+                      <TableCell>{equino.fechaDeCreacion}</TableCell>
+                      <TableCell>{equino.fechaDeActualizacion}</TableCell>
                       <TableCell>{new Date(equino.fechaNacimiento).toLocaleDateString()}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">

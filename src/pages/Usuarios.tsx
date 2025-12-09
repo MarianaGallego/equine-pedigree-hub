@@ -42,7 +42,6 @@ const Usuarios = () => {
 
   const filteredUsuarios = usuarios.filter((user) =>
     user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     `${user.nombre} ${user.apellido}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -82,7 +81,7 @@ const Usuarios = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Buscar por nombre, usuario o email..."
+                placeholder="Buscar por nombre o usuario"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -97,10 +96,11 @@ const Usuarios = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Usuario</TableHead>
+                  <TableHead>Id</TableHead>
                   <TableHead>Nombre Completo</TableHead>
+                  <TableHead>Username</TableHead>
                   <TableHead>Email</TableHead>
-                  <TableHead>Estado</TableHead>
+                  <TableHead>Fecha de creacion</TableHead>
                   <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
@@ -108,14 +108,11 @@ const Usuarios = () => {
                 {filteredUsuarios.length > 0 ? (
                   filteredUsuarios.map((usuario) => (
                     <TableRow key={usuario.id}>
-                      <TableCell className="font-medium">{usuario.username}</TableCell>
+                      <TableCell>{usuario.idUsuario}</TableCell>
                       <TableCell>{usuario.nombre} {usuario.apellido}</TableCell>
+                      <TableCell className="font-medium">{usuario.username}</TableCell>
                       <TableCell>{usuario.email}</TableCell>
-                      <TableCell>
-                        <Badge variant={usuario.activo ? "default" : "secondary"}>
-                          {usuario.activo ? "Activo" : "Inactivo"}
-                        </Badge>
-                      </TableCell>
+                      <TableCell>{usuario.fechaDeCreacion}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
                           <Button

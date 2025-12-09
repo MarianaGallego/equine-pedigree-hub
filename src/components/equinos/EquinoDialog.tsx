@@ -72,35 +72,63 @@ export function EquinoDialog({ open, onOpenChange, equino }: EquinoDialogProps) 
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="nombre">Nombre</Label>
-            <Input id="nombre" {...register("nombre", { required: true })} />
+            <Label htmlFor="id">Id</Label>
+            <Input id="id" {...register("id", { required: true })} />
+          </div>
+
+          <div className="space-y-2">
+             <Label htmlFor="nombre">Nombre</Label>
+             <Input id="nombre" {...register("nombre", { required: true })} />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="raza">Raza</Label>
-              <Input id="raza" {...register("raza", { required: true })} />
+              <Label htmlFor="apellido">Apellido</Label>
+              <Input id="apellido" {...register("apellido", { required: true })} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="color">Color</Label>
-              <Input id="color" {...register("color", { required: true })} />
+              <Label htmlFor="tipoDeSangre">Tipo de sangre</Label>
+              <Input id="tipoDeSangre" {...register("tipoDeSangre", { required: true })} />
             </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="estaVivo">Esta vivo</Label>
+              <Input id="estaVivo" {...register("estaVivo", { required: true })} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="observacion">Observacion</Label>
+              <Input id="observacion" {...register("observacion", { required: true })} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="urlFoto">Foto</Label>
+              <Input id="urlFoto" {...register("urlFoto", { required: true })} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="genero">Genero</Label>
+              <Input id="genero" {...register("genero", { required: true })} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="tipoDePaso">Tipo de paso</Label>
+              <Input id="tipoDePaso" {...register("tipoDePaso", { required: true })} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="propietario">Propietario</Label>
+              <Input id="propietario" {...register("propietario", { required: true })} />
+            </div>
+
+           <div className="space-y-2">
+             <Label htmlFor="arbolGenealogico">Arbol genealogico</Label>
+             <Input id="arbolGenealogico" {...register("arbolGenealogico", { required: true })} />
+           </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="sexo">Sexo</Label>
-              <Select value={sexo} onValueChange={(value) => setValue("sexo", value as "MACHO" | "HEMBRA")}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="MACHO">Macho</SelectItem>
-                  <SelectItem value="HEMBRA">Hembra</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
 
             <div className="space-y-2">
               <Label htmlFor="fechaNacimiento">Fecha de Nacimiento</Label>
